@@ -27,7 +27,7 @@
             <xs:element name="firstName" type="xs:string"/>
             <xs:element name="LastName" type="xs:string"/>
             <xs:element name="Address" type="xs:string"/>
-               <xs:element name="NatId" type="xs:int"/>
+               <xs:element name="NatId" type="xs:long"/>
         </xs:sequence>
     </xs:complexType>
 </xs:schema>

@@ -7,6 +7,7 @@ import org.hibernate.annotations.CascadeType;
 
 import org.springframework.data.jpa.repository.Query;
 
+import com.fasterxml.jackson.annotation.JsonAlias;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import jakarta.persistence.Column;
@@ -37,9 +38,11 @@ public class Student {
     private int studentId;
 
     @Column(name = "ST-FName")
+    @JsonAlias({ "fname", "fName", "FName" })
     private String fName;
 
     @Column(name = "ST-LName")
+    @JsonAlias({ "lname", "lName", "LName" })
     private String lName;
 
     @Column(name = "ST-Addre")
@@ -49,7 +52,7 @@ public class Student {
     private String mobile;
 
     @Column(name = "ST-NatID")
-    private int natId;
+    private long natId;
 
     @ManyToMany(fetch = FetchType.LAZY)
     @JoinTable(name = "std-cor-table", joinColumns = @JoinColumn(name = "STD-ID"), inverseJoinColumns = @JoinColumn(name = "COR-ID"))
