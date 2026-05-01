@@ -1,0 +1,14 @@
+{
+    "configurations": [
+        {
+            "type": "java",
+            "name": "Spring Boot-UnApplication<un>",
+            "request": "launch",
+            "cwd": "${workspaceFolder}",
+            "mainClass": "com.un.un.UnApplication",
+            "projectName": "un",
+            "args": "",
+            "envFile": "${workspaceFolder}/.env"
+        }
+    ]
+}

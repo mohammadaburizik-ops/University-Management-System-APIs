@@ -1,0 +1,248 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>UN Data Dashboard</title>
+  <link rel="stylesheet" href="app.css?v=20260430-3">
+</head>
+<body>
+  <div class="background-orb orb-one"></div>
+  <div class="background-orb orb-two"></div>
+  <div class="background-grid"></div>
+
+  <main class="app-shell">
+    <header class="masthead">
+      <div class="masthead-copy">
+        <p class="eyebrow">UN Oracle Dashboard</p>
+        <h1>Welcome to the University Management System.</h1>
+        <p class="lede">
+          Made by: Mohammed AbuRezeq & Ameen Awda
+        </p>
+
+        <div class="quick-actions">
+          <button class="primary-action" id="loadStudentsButton" type="button">All Students</button>
+          <button class="primary-action" id="loadCoursesButton" type="button">All Courses</button>
+          <button class="primary-action" id="loadGradesButton" type="button">All Grades</button>
+        </div>
+      </div>
+
+      <aside class="masthead-panel">
+        <div class="signal-strip">
+          <span class="signal-dot"></span>
+          <div>
+            <p class="panel-label">Connection</p>
+            <strong>Spring Boot + Oracle</strong>
+          </div>
+        </div>
+
+        <div class="mini-board">
+          <div class="mini-tile">
+            <span>Student Desk</span>
+            <strong>Look up, save, update, or delete student records.</strong>
+          </div>
+          <div class="mini-tile">
+            <span>Course Desk</span>
+            <strong>Inspect, save, update, or delete course records.</strong>
+          </div>
+          <div class="mini-tile">
+            <span>Enrollment Desk</span>
+            <strong>Enroll students in courses and verify grade data.</strong>
+          </div>
+        </div>
+      </aside>
+    </header>
+
+    <section class="workspace">
+      <section class="command-board">
+        <article class="command-card card-student">
+          <div class="command-heading">
+            <p class="section-tag">Student Desk</p>
+            <h2>Students</h2>
+            <p class="section-copy">Search students, inspect their courses, and manage the full student record.</p>
+          </div>
+
+          <div class="control-block">
+            <label for="studentIdInput">Find One Student</label>
+            <div class="field-row">
+              <input id="studentIdInput" type="number" min="1" placeholder="Type student ID">
+              <button class="secondary-action" id="findStudentButton" type="button">Open Record</button>
+            </div>
+            <p class="field-hint">Example IDs: 1001, 1002, 1003</p>
+          </div>
+
+          <div class="control-block">
+            <label for="studentCoursesInput">Show Student Courses</label>
+            <div class="field-row">
+              <input id="studentCoursesInput" type="number" min="1" placeholder="Type student ID">
+              <button class="secondary-action" id="studentCoursesButton" type="button">Show Courses</button>
+            </div>
+            <p class="field-hint">Use an existing student ID from your Oracle table.</p>
+          </div>
+
+          <div class="control-block">
+            <label for="studentFormIdInput">Save Or Update Student</label>
+            <div class="form-grid">
+              <input id="studentFormIdInput" type="number" min="1" placeholder="Student ID">
+              <input id="studentFormNatIdInput" type="number" min="1" placeholder="National ID">
+              <input id="studentFormFNameInput" type="text" placeholder="First name">
+              <input id="studentFormLNameInput" type="text" placeholder="Last name">
+              <input id="studentFormAddressInput" type="text" placeholder="Address">
+              <input id="studentFormMobileInput" type="text" placeholder="Mobile number">
+            </div>
+            <div class="action-row">
+              <button class="secondary-action" id="saveStudentButton" type="button">Save Student</button>
+              <button class="secondary-action tertiary-action" id="updateStudentButton" type="button">Update Student</button>
+            </div>
+            <p class="field-hint">Fill every field before saving or updating because the backend stores the full student object.</p>
+          </div>
+
+          <div class="control-block">
+            <label for="deleteStudentIdInput">Delete Student</label>
+            <div class="field-row">
+              <input id="deleteStudentIdInput" type="number" min="1" placeholder="Type student ID">
+              <button class="secondary-action danger-action" id="deleteStudentButton" type="button">Delete Student</button>
+            </div>
+            <p class="field-hint">This sends the existing `deleteStudent` API request with the student ID.</p>
+          </div>
+        </article>
+
+        <article class="command-card card-course">
+          <div class="command-heading">
+            <p class="section-tag">Course Desk</p>
+            <h2>Courses</h2>
+            <p class="section-copy">Search courses, inspect enrolled students, and manage the full course record.</p>
+          </div>
+
+          <div class="control-block">
+            <label for="courseIdInput">Find One Course</label>
+            <div class="field-row">
+              <input id="courseIdInput" type="number" min="1" placeholder="Type course ID">
+              <button class="secondary-action" id="findCourseButton" type="button">Open Course</button>
+            </div>
+            <p class="field-hint">Example IDs: 2001, 2002, 2003</p>
+          </div>
+
+          <div class="control-block">
+            <label for="courseStudentsInput">Show Course Students</label>
+            <div class="field-row">
+              <input id="courseStudentsInput" type="number" min="1" placeholder="Type course ID">
+              <button class="secondary-action" id="courseStudentsButton" type="button">Show Students</button>
+            </div>
+            <p class="field-hint">Use an existing course ID from your Oracle table.</p>
+          </div>
+
+          <div class="control-block">
+            <label for="courseFormIdInput">Save Or Update Course</label>
+            <div class="form-grid">
+              <input id="courseFormIdInput" type="number" min="1" placeholder="Course ID">
+              <input id="courseFormNameAppreInput" type="text" placeholder="Course abbreviation">
+              <input id="courseFormNameInput" type="text" placeholder="Course name">
+              <input id="courseFormDescriptionInput" type="text" placeholder="Course description">
+            </div>
+            <div class="action-row">
+              <button class="secondary-action" id="saveCourseButton" type="button">Save Course</button>
+              <button class="secondary-action tertiary-action" id="updateCourseButton" type="button">Update Course</button>
+            </div>
+            <p class="field-hint">Fill every field before saving or updating because the backend stores the full course object.</p>
+          </div>
+
+          <div class="control-block">
+            <label for="deleteCourseIdInput">Delete Course</label>
+            <div class="field-row">
+              <input id="deleteCourseIdInput" type="number" min="1" placeholder="Type course ID">
+              <button class="secondary-action danger-action" id="deleteCourseButton" type="button">Delete Course</button>
+            </div>
+            <p class="field-hint">This sends the existing `deleteCourse` API request with the course ID.</p>
+          </div>
+        </article>
+
+        <article class="command-card card-grade">
+          <div class="command-heading">
+            <p class="section-tag">Enrollment Desk</p>
+            <h2>Enrollments And Grades</h2>
+            <p class="section-copy">Enroll a student in a course, then verify grade records using both IDs together.</p>
+          </div>
+
+          <div class="control-block">
+            <label for="enrollStudentIdInput">Enroll Student In Course</label>
+            <div class="field-row split-fields">
+              <input id="enrollStudentIdInput" type="number" min="1" placeholder="Student ID">
+              <input id="enrollCourseIdInput" type="number" min="1" placeholder="Course ID">
+              <button class="secondary-action" id="enrollStudentCourseButton" type="button">Enroll Student</button>
+            </div>
+            <p class="field-hint">This uses the existing enrollment API route and links an existing student to an existing course.</p>
+          </div>
+
+          <div class="control-block">
+            <label for="gradeStudentIdInput">Check Student Grade</label>
+            <div class="field-row split-fields">
+              <input id="gradeStudentIdInput" type="number" min="1" placeholder="Student ID">
+              <input id="gradeCourseIdInput" type="number" min="1" placeholder="Course ID">
+              <button class="secondary-action" id="studentGradeButton" type="button">Get Grade</button>
+            </div>
+            <p class="field-hint">Fill both fields before pressing the button.</p>
+          </div>
+
+          <div class="control-block">
+            <label for="setGradeStudentIdInput">Set Student Course Grade</label>
+            <div class="field-row triple-fields">
+              <input id="setGradeStudentIdInput" type="number" min="1" placeholder="Student ID">
+              <input id="setGradeCourseIdInput" type="number" min="1" placeholder="Course ID">
+              <input id="setGradeValueInput" type="number" step="0.01" placeholder="Grade">
+              <button class="secondary-action tertiary-action" id="setStudentCourseGradeButton" type="button">Set Grade</button>
+            </div>
+            <p class="field-hint">Enter student ID, course ID, and the grade value to call the grade update API.</p>
+          </div>
+
+          <div class="info-callout">
+            <span class="callout-label">Quick tip</span>
+            <p>Use the big buttons above for a full list, then narrow down or manage records with the control cards.</p>
+          </div>
+        </article>
+      </section>
+
+      <section class="viewer-stage">
+        <div class="viewer-shell">
+          <div class="viewer-header">
+            <div>
+              <p class="section-tag">Live Output</p>
+              <h2 id="resultTitle">Ready</h2>
+            </div>
+
+            <div class="result-meta">
+              <span id="resultStatus" class="status-pill neutral">Waiting</span>
+              <span id="resultEndpoint" class="endpoint-pill">No request yet</span>
+            </div>
+          </div>
+
+          <div class="viewer-frame">
+            <div id="resultContent" class="results-body">
+              <div class="empty-state">
+                <div class="empty-state-inner">
+                  <span class="empty-badge">Dashboard Ready</span>
+                  <h3>Press any button to print data here.</h3>
+                  <p>The page will show tables, messages, and record details in this presentation area.</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="support-strip">
+          <div class="support-card">
+            <span class="support-label">How to use it</span>
+            <p>Start with a full list, grab an ID, then use the forms on the left to save, update, delete, or enroll.</p>
+          </div>
+          <div class="support-card">
+            <span class="support-label">Best for demos</span>
+            <p>This layout keeps both read APIs and write APIs in the same place so users can manage the project without raw API tools.</p>
+          </div>
+        </div>
+      </section>
+    </section>
+  </main>
+
+  <script src="app.js?v=20260430-3"></script>
+</body>
+</html>
