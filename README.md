@@ -32,7 +32,7 @@ This project provides REST APIs for creating, reading, updating, and deleting st
 
 ## Technologies Used
 
-- Java 22
+- Java 18
 - Spring Boot 3.3.2
 - Spring Web
 - Spring Data JPA
